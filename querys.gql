@@ -1,0 +1,78 @@
+query {
+  competitionsQuery{
+    id
+  }
+}
+
+
+mutation {
+  createTeam(id: "1", name: "Blooming",
+    code:"BLO",tla:"tla",
+    shortName:"BLO",areaName:"Bolivia",
+    runningCompetitions:["1","2"]
+    email:"blooming@blooming.com") {
+    id
+  }
+}
+
+mutation {
+  createCompetition(id: "1", name: "Blooming",
+    code:"BLO",tla:"tla",
+    shortName:"BLO",areaName:"Bolivia",
+    runningCompetitions:["1","2"]
+    email:"blooming@blooming.com") {
+    id
+  }
+}
+
+
+query {
+  teamsQuery{
+    id,
+    name,
+    tla,
+    email,
+    competitions{
+      name
+    }
+  }
+}
+
+
+
+
+createPlayer(
+id: String!
+name: String!
+code: String!
+tla: String!
+shortName: String!
+areaName: String!
+email: String!
+runningCompetitions: [String]
+)
+
+
+
+mutation {
+  createCompetition(id: "1", name: "Blooming",
+    code:"BLO",tla:"tla",
+    shortName:"BLO",areaName:"Bolivia",
+    runningCompetitions:["1","2"]
+    email:"blooming@blooming.com") {
+    id
+  }
+}
+
+query {
+  playersQuery(id:"2013"){
+    id,name
+  }
+}
+
+
+mutation {
+  importLeague(leagueCode: "BSA") {
+    id
+  }
+}

@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb3
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: nahim
+      MONGO_INITDB_ROOT_PASSWORD: aemlpX43elqeuWDB
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+  championship:
+    build: .
+    command: node server.js
+    depends_on:
+      - mongodb
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - MONGODB_URI=mongodb://nahim:aemlpX43elqeuWDB@mongodb3:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false
+      - API_TOKEN=8cbca05ef30f4292a2fbaa439d5b96e7
+      - API_URL=https://api.football-data.org/
+volumes:
+  mongodb_data_container:
+  championship:
